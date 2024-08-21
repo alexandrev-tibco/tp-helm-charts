@@ -34,7 +34,7 @@ This project (_Helm Charts for TIBCO® Platform_) is licensed under the [Apache 
 
 ## Other Software
 
-When you use some of the Helm charts, you fetch and use other charts that might fetch other container images, each with their own licenses.
+When you use some of the Helm charts, you fetch and use other charts that might fetch other container images, each with their own licenses. 1
 A partial summary of the third party software and licenses used in this project is available [here](docs/third-party-software-licenses.md).
 
 ---
