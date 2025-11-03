@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/name: {{ $fullName }}
 spec:
   parentRefs:
-    - name: {{ default "public" .Values.publicApi.gateway.name }}
+    - name: {{ default .Values.publicApi.ingress.config.className .Values.ingress.gateway.name }}
       sectionName: https  
       {{- if .Values.publicApi.gateway.namespace }}
       namespace: {{ .Values.publicApi.gateway.namespace }}
