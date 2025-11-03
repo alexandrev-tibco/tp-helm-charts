@@ -1,5 +1,5 @@
 {{- /* Solo renderiza si queremos usar Gateway API en lugar de Ingress */ -}}
-{{- if eq .Values.publicApi.ingress.controllerName "nginx-gateway-fabric" }}
+{{- if eq .Values.publicApi.ingress.controllerName "nginx" }}
 {{- $fullName := include "bw5provisioner.fullname" . -}}
 
 # HTTPRoute principal (apunta al Gateway en HTTPS)
