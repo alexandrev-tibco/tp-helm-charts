@@ -250,6 +250,7 @@ publicApi:
       className: nginx
       pathPrefix: /tibco/bw
       fqdn: ""
+  gateway:
 
 infraCPProxy:
   imageTag: 280
