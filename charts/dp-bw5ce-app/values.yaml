@@ -27,6 +27,10 @@ appConfig:
   lastUpdated: ""
   customBaseImagePath: ""
 
+gateway:
+  name: ""
+  namespace: ""
+
 otel:
   enabled: true
 
