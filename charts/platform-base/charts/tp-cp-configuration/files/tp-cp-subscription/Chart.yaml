@@ -5,7 +5,7 @@
 #
 
 
-apiVersion: v2
+apiVersion: v2 
 name: tp-cp-subscription
 description: A Helm chart for provision subscription on TIBCO Platform Control Plane
 type: application

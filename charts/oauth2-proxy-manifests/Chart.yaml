@@ -6,7 +6,7 @@ name: oauth2-proxy
 # Original oauth2-proxy chart version: 1.9.0
 # Original oauth2-proxy version: 10.2.15
 version: 10.2.19
-apiVersion: v2
+apiVersion: v2 
 appVersion: 1.11.0
 
 home: https://oauth2-proxy.github.io/oauth2-proxy/

@@ -4,7 +4,7 @@
 # in the license file that is distributed with this file.
 #
 
-apiVersion: v2
+apiVersion: v2 
 appVersion: "1.9.0-28"
 description: TIBCO Platform Control Plane -- Messaging
 name: tp-cp-msg-contrib

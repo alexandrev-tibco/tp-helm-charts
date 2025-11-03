@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v2 
 appVersion: 1.11.0
 dependencies:
 - name: monitoring-service

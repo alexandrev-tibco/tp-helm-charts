@@ -4,7 +4,7 @@
 # in the license file that is distributed with this file.
 #
 
-apiVersion: v2
+apiVersion: v2 
 name: tp-cp-recipes
 description: TIBCO Platform recipe chart
 type: application

@@ -2,7 +2,7 @@
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
-apiVersion: v2
+apiVersion: v2 
 name: dp-bwce-mon
 version: 1.12.2
 appVersion: "1.12.0"

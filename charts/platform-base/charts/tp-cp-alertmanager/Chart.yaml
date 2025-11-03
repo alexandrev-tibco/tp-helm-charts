@@ -13,7 +13,7 @@
 #    limitations under the License.
 
 
-apiVersion: v2
+apiVersion: v2 
 name: tp-cp-alertmanager
 description: The Alertmanager handles alerts sent by client applications such as the Prometheus server.
 type: application

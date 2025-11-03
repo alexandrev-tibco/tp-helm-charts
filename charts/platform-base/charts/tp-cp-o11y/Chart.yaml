@@ -6,7 +6,7 @@
 #
 
 #
-apiVersion: v2
+apiVersion: v2 
 name: tp-cp-o11y
 version: 1.11.7
 appVersion: "1.11.0"

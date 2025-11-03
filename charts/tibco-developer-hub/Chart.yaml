@@ -2,7 +2,7 @@
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
-apiVersion: v2
+apiVersion: v2 
 name: tibco-developer-hub
 description: A Helm chart for TIBCO® Developer Hub
 type: application

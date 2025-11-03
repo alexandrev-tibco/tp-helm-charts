@@ -4,7 +4,7 @@
 # in the license file that is distributed with this file.
 #
 
-apiVersion: v2
+apiVersion: v2 
 name: platform-base
 description: TIBCO Platform base chart
 type: application

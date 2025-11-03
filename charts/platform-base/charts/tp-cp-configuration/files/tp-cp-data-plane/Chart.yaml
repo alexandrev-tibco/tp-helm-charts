@@ -5,7 +5,7 @@
 #
 
 
-apiVersion: v2
+apiVersion: v2 
 name: tp-cp-data-plane
 description: A Helm chart registering Data Plane on TIBCO Platform Control Plane
 type: application

@@ -4,7 +4,7 @@
 # in the license file that is distributed with this file.
 #
 
-apiVersion: v2
+apiVersion: v2 
 appVersion: "3.0.2-42"
 description: Data-plane provisioning chart for Pulsar server group
 name: msg-pulsar-tp

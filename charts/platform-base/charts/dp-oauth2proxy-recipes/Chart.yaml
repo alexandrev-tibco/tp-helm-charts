@@ -2,7 +2,7 @@
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
-apiVersion: v2
+apiVersion: v2 
 name: dp-oauth2proxy-recipes
 description: TIBCO Platform OAuth2 Proxy Data Plane recipes
 type: application

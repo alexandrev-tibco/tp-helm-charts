@@ -5,7 +5,7 @@
 #
 
 
-apiVersion: v2
+apiVersion: v2 
 name: tp-cp-configuration
 description: TIBCO Platform Control Plane Configuration chart
 type: application

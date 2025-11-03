@@ -2,7 +2,7 @@
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
-apiVersion: v2
+apiVersion: v2 
 name: tp-cp-integration-bw
 version: 1.12.18
 appVersion: 1.12.0

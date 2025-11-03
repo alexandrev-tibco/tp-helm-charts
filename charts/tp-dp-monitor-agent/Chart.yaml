@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v2 
 appVersion: 1.12.0
 description: A Helm chart for deploying the tp-dp-monitor-agent service
 name: tp-dp-monitor-agent

@@ -2,7 +2,7 @@
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
-apiVersion: v2
+apiVersion: v2 
 name: flogoprovisioner
 version: 1.12.6
 appVersion: "1.12.0"

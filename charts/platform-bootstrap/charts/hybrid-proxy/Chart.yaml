@@ -5,7 +5,7 @@
 #
 
 
-apiVersion: v2
+apiVersion: v2 
 name: hybrid-proxy
 version: 1.11.1
 appVersion: 1.11.0
