@@ -485,6 +485,16 @@ entries:
   dp-bw5ce-app:
   - apiVersion: v2
     appVersion: 1.12.0
+    created: "2025-11-03T16:51:44.120075544Z"
+    description: A Helm chart for BW5 Containers application
+    digest: 26f09467e3a6b071cbe2d59cfe56ea4f65418b8cb0a3d033c04182bd22355a40
+    name: dp-bw5ce-app
+    type: application
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-bw5ce-app-1.12.6/dp-bw5ce-app-1.12.6.tgz
+    version: 1.12.6
+  - apiVersion: v2
+    appVersion: 1.12.0
     created: "2025-10-27T11:52:37.80070395Z"
     description: A Helm chart for BW5 Containers application
     digest: c9a1f8b8f7cca5d6bf2adf0546bb12027476351850d2d25ab3f33103a113b22e
@@ -12610,4 +12620,4 @@ entries:
     urls:
     - https://github.com/TIBCOSoftware/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.3.136/tp-dp-monitor-agent-1.3.136.tgz
     version: 1.3.136
-generated: "2025-11-03T16:46:12.146326479Z"
+generated: "2025-11-03T16:51:44.120887497Z"
