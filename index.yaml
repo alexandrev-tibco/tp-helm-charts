@@ -1143,6 +1143,26 @@ entries:
   dp-configure-namespace:
   - apiVersion: v2
     appVersion: 1.11.0
+    created: "2025-11-03T16:46:12.145537947Z"
+    dependencies:
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.9.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.44.5
+    description: A Helm chart for creating service account, cluster-role, cluster-role-binding,
+      role-binding & network-policies
+    digest: d49295a22934f3d6ae74a9648585595eea897b516ec8fb020fa99164becdddbc
+    name: dp-configure-namespace
+    type: application
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-configure-namespace-1.11.5/dp-configure-namespace-1.11.5.tgz
+    version: 1.11.5
+  - apiVersion: v2
+    appVersion: 1.11.0
     created: "2025-11-03T16:41:02.203534927Z"
     dependencies:
     - condition: config.enabled
@@ -12590,4 +12610,4 @@ entries:
     urls:
     - https://github.com/TIBCOSoftware/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.3.136/tp-dp-monitor-agent-1.3.136.tgz
     version: 1.3.136
-generated: "2025-11-03T16:41:02.204185352Z"
+generated: "2025-11-03T16:46:12.146326479Z"
