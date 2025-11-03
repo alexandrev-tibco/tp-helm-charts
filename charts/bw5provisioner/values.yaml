@@ -249,7 +249,7 @@ publicApi:
     config:
       className: nginx
       pathPrefix: /tibco/bw
-      fqdn: ""
+      fqdn: "aaa.com"
 gateway:
   name: ""
 
