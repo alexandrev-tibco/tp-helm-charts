@@ -33,6 +33,9 @@ rules:
 - apiGroups: ["networking.k8s.io"]
   resources: ["ingresses"]
   verbs: ["list", "get", "create", "update", "delete"]
+- apiGroups: ["gateway.networking.k8s.io"]
+  resources: ["gateways", "httproutes"]
+  verbs: ["list", "get", "watch", "create", "update", "patch", "delete"]
 {{- if .Values.rbac.ingressController.kong }}
 - apiGroups: ["configuration.konghq.com"]
   resources: ["kongplugins"]
