@@ -1,63 +1,68 @@
-# Copyright © 2025. Cloud Software Group, Inc.
-# This file is subject to the license terms contained
-# in the license file that is distributed with this file.
+{{- /* Render only when using NGF/Gateway API instead of classic NGINX Ingress */ -}}
+{{- if and .Values.ingress.enabled (eq .Values.ingress.controllerName "nginx-gateway-fabric") -}}
+{{- $dot := . -}}
+{{- $gwName := default "public" .Values.gateway.name -}}
+{{- $gwNs := .Values.gateway.namespace -}}
 
-{{ if .Values.ingress.enabled -}}
-{{- if eq .Values.ingress.controllerName "nginx" -}}
-{{- $dot := . }}
 {{- range $rule := .Values.ingress.rules -}}
 {{- range $path := $rule.paths }}
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  annotations:
-    {{- if eq $path.path "/" }}
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    {{- else }}
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    {{- end }}
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/x-forwarded-prefix: {{ $path.path | quote }}
-    {{- if $path.serviceDiscoverable }}
-    platform.tibco.com/service-description: {{ $path.serviceDescription | squote }}
-    {{- end }}
-    {{- with $.Values.ingress.annotations }}
-      {{- toYaml . | nindent 4 }}
-    {{- end }}
+  # Name aligns with previous Ingress naming (per service port)
+  name: {{ include "dp-bw5ce-app.fullname" $dot }}-{{ $path.port }}
   labels:
     {{- include "dp-bw5ce-app.labels" $dot | nindent 4 }}
     platform.tibco.com/service-discoverable: {{ $path.serviceDiscoverable | quote }}
-  name: {{ include "dp-bw5ce-app.fullname" $dot }}-{{ $path.port }}
-spec:
-  ingressClassName: {{ $.Values.ingress.className }}
-  {{- if $.Values.ingress.tls }}
-  tls:
-    {{- range $.Values.ingress.tls }}
-    - hosts:
-        {{- range .hosts }}
-        - {{ . | quote }}
-        {{- end }}
-      secretName: {{ .secretName }}
-    {{- end }}
+  {{- if $path.serviceDiscoverable }}
+  annotations:
+    # Optional service description metadata (moved from Ingress annotation)
+    platform.tibco.com/service-description: {{ $path.serviceDescription | squote }}
   {{- end }}
+spec:
+  # Attach to your Gateway (HTTPS section recommended)
+  parentRefs:
+    - name: {{ $gwName }}
+      sectionName: https
+      {{- if $gwNs }}
+      namespace: {{ $gwNs }}
+      {{- end }}
+
+  # Hostname from the rule (same behavior as Ingress .rules.host)
+  hostnames:
+    - {{ $rule.host | quote }}
+
   rules:
-  - host: {{ $rule.host | quote }}
-    http:
-      paths:
-      - backend:
-          service:
-            name: {{ include "dp-bw5ce-app.fullname" $dot }}
-            port:
-              number: {{ $path.port }}
-        {{- if eq $path.path "/" }}
-        path: {{ $path.path }}(.*)
-        {{- else }}
-        path: {{ $path.path }}(/|$)(.*)
-        {{- end }}
-        pathType: {{ $path.pathType }}
-        
-{{- end }}
+    - matches:
+        # Keep PathPrefix semantics. For "/" we still match "/" (captures the rest).
+        - path:
+            type: PathPrefix
+            value: {{ $path.path | quote }}
+
+      # Replicate NGINX Ingress rewrite-target behavior:
+      # - When original path was "/" and rewrite-target "/$1",
+      #   ReplacePrefixMatch "/" keeps the rest of the URL path.
+      # - When original path was "<prefix>(/|$)(.*)" and rewrite-target "/$2",
+      #   ReplacePrefixMatch "/" strips "<prefix>" and forwards the remainder.
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+
+        # Preserve X-Forwarded-Prefix like the original Ingress annotation
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            add:
+              - name: X-Forwarded-Prefix
+                value: {{ $path.path | quote }}
+
+      # Backend service and port are identical to the Ingress spec
+      backendRefs:
+        - name: {{ include "dp-bw5ce-app.fullname" $dot }}
+          port: {{ $path.port }}
 {{- end }}
 {{- end }}
 {{- end }}
