@@ -37,6 +37,10 @@ rules:
 - apiGroups: [""]
   resources: ["services"]
   verbs: ["create"]
+# manage Gateway API resources
+- apiGroups: ["gateway.networking.k8s.io"]
+  resources: ["gateways", "httproutes", "gatewayclasses"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 # below are required by observability
 - apiGroups: [""]
   resources: ["pods/log"] 
