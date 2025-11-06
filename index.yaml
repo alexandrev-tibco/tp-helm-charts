@@ -12,6 +12,15 @@ entries:
     version: 1.13.0
   - apiVersion: v2
     appVersion: 1.12.0
+    created: "2025-11-06T14:19:29.737726945Z"
+    description: A Helm chart for Artifact Manager
+    digest: fd2b61eca739750e3d05c53a35da6f2ff09209012b2fd37fcc5f29536899fefd
+    name: artifactmanager
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/artifactmanager-1.12.1/artifactmanager-1.12.1.tgz
+    version: 1.12.1
+  - apiVersion: v2
+    appVersion: 1.12.0
     created: "2025-10-28T05:27:32.727511287Z"
     description: A Helm chart for Artifact Manager
     digest: 00b5964579bbfe2e6af003f4a0158cd01183435541af051d1d686850ef804120
@@ -97,6 +106,20 @@ entries:
     urls:
     - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/bw5provisioner-1.13.0/bw5provisioner-1.13.0.tgz
     version: 1.13.0
+  - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-06T14:19:29.899156822Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW5 Provisioner
+    digest: f121256b8c1c658792ddfc9dd29c552f0275a2ecc848222f6a61c5a8ad2f7def
+    home: https://github.com/tibco/tp-iapp-bw5-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bw5provisioner
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/bw5provisioner-1.12.10/bw5provisioner-1.12.10.tgz
+    version: 1.12.10
   - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-03T16:36:34.833806512Z"
@@ -224,6 +247,20 @@ entries:
     urls:
     - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/bwprovisioner-1.13.0/bwprovisioner-1.13.0.tgz
     version: 1.13.0
+  - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-06T14:19:30.046737352Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
+    digest: 6046f0d0b684b301c47a02e787a7c1e67a1d56cf07a5798d431fba08f2c575fa
+    home: https://github.com/tibco/tp-iapp-bw-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bwprovisioner
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/bwprovisioner-1.12.5/bwprovisioner-1.12.5.tgz
+    version: 1.12.5
   - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-10-27T11:52:37.001390687Z"
@@ -407,6 +444,20 @@ entries:
     urls:
     - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-bw-adapter-1.13.0/dp-bw-adapter-1.13.0.tgz
     version: 1.13.0
+  - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-06T14:19:30.207946437Z"
+    description: TIBCO Platform Bare-metal Dataplane Capabilty -- BW Adapter
+    digest: 392e1817688012444e5a581645f427fbc97484cc03a908fa8b324f7e09ef0844
+    home: https://github.com/tibco/tp-iapp-bw-adapter.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: dp-bw-adapter
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-bw-adapter-1.12.3/dp-bw-adapter-1.12.3.tgz
+    version: 1.12.3
   - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-10-27T11:52:37.170568011Z"
@@ -685,6 +736,15 @@ entries:
     urls:
     - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-bwce-mon-1.13.0/dp-bwce-mon-1.13.0.tgz
     version: 1.13.0
+  - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-06T14:19:30.517713144Z"
+    description: TIBCO Platform Dataplane Capabilty -- BWCE Monitoring
+    digest: 071d4736a90b47bbfde9df7f52f44a6806a891748d50c6da0ce12de6196ffc2e
+    name: dp-bwce-mon
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-bwce-mon-1.12.3/dp-bwce-mon-1.12.3.tgz
+    version: 1.12.3
   - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-10-27T11:52:38.139675582Z"
@@ -1241,6 +1301,26 @@ entries:
     urls:
     - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-configure-namespace-1.12.0/dp-configure-namespace-1.12.0.tgz
     version: 1.12.0
+  - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-06T14:19:30.726011646Z"
+    dependencies:
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.9.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.44.6
+    description: A Helm chart for creating service account, cluster-role, cluster-role-binding,
+      role-binding & network-policies
+    digest: b3f8261a1b573316e3795c67e4b88fe462db60964e27cb21daa22a15085b1af4
+    name: dp-configure-namespace
+    type: application
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/dp-configure-namespace-1.11.6/dp-configure-namespace-1.11.6.tgz
+    version: 1.11.6
   - apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-03T16:46:12.145537947Z"
@@ -1932,6 +2012,20 @@ entries:
     urls:
     - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/flogoprovisioner-1.13.0/flogoprovisioner-1.13.0.tgz
     version: 1.13.0
+  - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-06T14:19:30.876728721Z"
+    description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
+    digest: aa6c824f1def88b053a15d5a8c4354ad9b800367553f19fcc0a87eae607b818e
+    home: https://github.com/tibco/tp-iapp-flogo-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: flogoprovisioner
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/flogoprovisioner-1.12.7/flogoprovisioner-1.12.7.tgz
+    version: 1.12.7
   - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-10-27T11:52:38.486135262Z"
@@ -2806,6 +2900,15 @@ entries:
     urls:
     - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/o11yservice-1.13.0/o11yservice-1.13.0.tgz
     version: 1.13.0
+  - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-06T14:19:31.080325758Z"
+    description: A helm chart for o11y service
+    digest: f0a8d3248b02a5af2d262b882abcc722f7001c61b3e56a79794e8ad6381085cc
+    name: o11yservice
+    urls:
+    - https://github.com/alexandrev-tibco/tp-helm-charts/releases/download/o11yservice-1.12.11/o11yservice-1.12.11.tgz
+    version: 1.12.11
   - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-10-28T05:27:32.984742239Z"
@@ -12733,4 +12836,4 @@ entries:
     urls:
     - https://github.com/TIBCOSoftware/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.3.136/tp-dp-monitor-agent-1.3.136.tgz
     version: 1.3.136
-generated: "2025-11-06T11:06:54.058075264Z"
+generated: "2025-11-06T14:19:31.081389216Z"
