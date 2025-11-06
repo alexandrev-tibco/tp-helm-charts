@@ -14,6 +14,90 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */}}
 
+{{- if .Values.controller.kubernetesGateway.enabled }}
+{{- $gw := .Values.controller.kubernetesGateway }}
+{{- $defaultGatewayClassName := tpl .Values.controller.ingressClassResource.name . }}
+{{- $gatewayClassName := $defaultGatewayClassName }}
+{{- if $gw.gatewayClass.name }}
+{{- $gatewayClassName = tpl $gw.gatewayClass.name . }}
+{{- end }}
+{{- $gatewayName := $gatewayClassName }}
+{{- if $gw.gateway.name }}
+{{- $gatewayName = tpl $gw.gateway.name . }}
+{{- end }}
+{{- $gatewayNamespace := default (include "kubernetes-ingress.namespace" .) (and $gw.gateway.namespace (tpl $gw.gateway.namespace .)) }}
+{{- if and $gw.gatewayClass.create ($gw.gatewayControllerName | default "") }}
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: GatewayClass
+metadata:
+  name: {{ $gatewayClassName }}
+  labels:
+    app.kubernetes.io/name: {{ include "kubernetes-ingress.name" . }}
+    helm.sh/chart: {{ include "kubernetes-ingress.chart" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+{{- with $gw.gatewayClass.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  controllerName: {{ $gw.gatewayControllerName }}
+{{- with $gw.gatewayClass.description }}
+  description: {{ . | quote }}
+{{- end }}
+{{- with $gw.gatewayClass.parameters }}
+  parametersRef:
+{{ toYaml . | indent 4 }}
+{{- end }}
+---
+{{- end }}
+{{- if $gw.gateway.create }}
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: {{ $gatewayName }}
+  namespace: {{ $gatewayNamespace }}
+  labels:
+    app.kubernetes.io/name: {{ include "kubernetes-ingress.name" . }}
+    helm.sh/chart: {{ include "kubernetes-ingress.chart" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+{{- with $gw.gateway.labels }}
+{{ toYaml . | indent 4 }}
+{{- end }}
+{{- with $gw.gateway.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  gatewayClassName: {{ $gatewayClassName }}
+{{- with $gw.gateway.addresses }}
+  addresses:
+{{ toYaml . | indent 4 }}
+{{- end }}
+{{- if $gw.gateway.listeners }}
+  listeners:
+{{- range $listener := $gw.gateway.listeners }}
+  - name: {{ $listener.name }}
+    protocol: {{ $listener.protocol }}
+    port: {{ $listener.port }}
+{{- if $listener.hostname }}
+    hostname: {{ tpl $listener.hostname $ }}
+{{- end }}
+{{- if $listener.tls }}
+    tls:
+{{ toYaml $listener.tls | indent 6 }}
+{{- end }}
+{{- if $listener.allowedRoutes }}
+    allowedRoutes:
+{{ toYaml $listener.allowedRoutes | indent 6 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- else }}
 {{- if semverCompare ">=1.16.0-0" .Capabilities.KubeVersion.Version }}
 {{- if or (.Capabilities.APIVersions.Has "networking.k8s.io/v1/IngressClass") (semverCompare ">=1.19.0-0" .Capabilities.KubeVersion.Version) }}
 apiVersion: networking.k8s.io/v1
@@ -42,5 +126,6 @@ spec:
   {{- if .Values.controller.ingressClassResource.parameters }}
   parameters:
 {{ toYaml .Values.controller.ingressClassResource.parameters | indent 4 }}
+{{- end }}
 {{- end }}
 {{- end }}

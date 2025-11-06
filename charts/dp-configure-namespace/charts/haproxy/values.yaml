@@ -180,6 +180,28 @@ controller:
   kubernetesGateway:
     enabled: false
     gatewayControllerName: haproxy.org/gateway-controller
+    gatewayClass:
+      create: false
+      name: ""
+      annotations: {}
+      description: ""
+      parameters: {}
+    gateway:
+      create: false
+      name: ""
+      namespace: ""
+      annotations: {}
+      labels: {}
+      addresses: []
+      listeners:
+        - name: http
+          protocol: HTTP
+          port: 80
+          hostname: ""
+          tls: {}
+          allowedRoutes:
+            namespaces:
+              from: Same
 
   ## Additional labels to add to the deployment or daemonset metadata
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
