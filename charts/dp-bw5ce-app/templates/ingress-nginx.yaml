@@ -1,5 +1,5 @@
 {{- /* Render only when using NGF/Gateway API instead of classic NGINX Ingress */ -}}
-{{- if and .Values.ingress.enabled (eq .Values.ingress.controllerName "nginx-gateway-fabric") -}}
+{{- if and .Values.ingress.enabled (eq .Values.ingress.controllerName "nginx") -}}
 {{- $dot := . -}}
 {{- $gwName := default $.Values.ingress.className  .Values.gateway.name -}}
 {{- $gwNs := .Values.gateway.namespace -}}
