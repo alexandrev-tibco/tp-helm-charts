@@ -52,7 +52,7 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext.bw5provisioner | nindent 12 }}
           {{- end }}
-          image: {{ include "bw5provisioner.image.registry" .}}{{"/"}}{{ include "bw5provisioner.image.repository" .}}{{"/"}}tp-bw5-provisioner:{{ .Values.global.bw5provisioner.image.tag }}
+          image: {{ include "bw5provisioner.image.registry" .}}{{"/"}}{{ include "bw5provisioner.image.repository" .}}{{"/"}}tp-bw5-provisioner:113-BW-21452
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           livenessProbe:
             httpGet:
